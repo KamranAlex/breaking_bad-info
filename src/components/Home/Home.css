@@ -1,0 +1,7 @@
+.main-container {
+  position: relative;
+  background-image: url('../../img/poster2.jpg');
+  background-size: contain;
+  background-position: center center;
+  height: 581px;
+}
