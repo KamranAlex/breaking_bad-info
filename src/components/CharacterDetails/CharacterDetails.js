@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import CharacterQuotes from "./CharacterQuotes";
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import CharacterQuotes from './CharacterQuotes'
 
 const CharacterDetails = () => {
-  const { char_id } = useParams();
-  const [castInfo, setCastInfo] = useState({});
+  const { char_id } = useParams()
+  const [castInfo, setCastInfo] = useState({})
   useEffect(() => {
     fetch(`https://www.breakingbadapi.com/api/characters/${char_id}`)
       .then((res) => res.json())
-      .then((data) => setCastInfo(data[0]));
-  }, [char_id]);
+      .then((data) => setCastInfo(data[0]))
+  }, [char_id])
 
   //Format name to get Character Quotes
-  if (typeof castInfo.name === "string") {
-    var name = castInfo.name;
-    var nameForParam = name.split(" ").join("+");
+  if (typeof castInfo.name === 'string') {
+    var name = castInfo.name
+    var nameForParam = name.split(' ').join('+')
   }
 
   return (
     <div>
-      <div className='container bg-dark mt-4' style={{ height: "540px" }}>
+      <div className='container bg-dark mt-4' style={{ height: 'auto' }}>
         <div className='row py-4'>
           <div className='col-md-6'>
             <img
               src={castInfo.img}
               alt=''
               className='img-fluid'
-              style={{ height: "490px" }}
+              style={{ height: '490px' }}
             />
           </div>
           <div className='col-md-6'>
@@ -35,20 +35,20 @@ const CharacterDetails = () => {
               Name: <span className='text-warning'>{castInfo.name}</span>
             </h4>
             <h4 className='text-light m-3'>
-              Nickname:{" "}
+              Nickname:{' '}
               <span className='text-warning'>
-                {" "}
+                {' '}
                 <i>{castInfo.nickname} </i>
               </span>
             </h4>
             <h4 className='text-light m-3'>
               D.O.B: <span className='text-warning'>{castInfo.birthday}</span>
             </h4>
-            {typeof castInfo.occupation === "object" && (
+            {typeof castInfo.occupation === 'object' && (
               <h4 className='text-light m-3'>
-                Occupation:{" "}
+                Occupation:{' '}
                 <span className='text-warning'>
-                  {castInfo.occupation.join("/")}
+                  {castInfo.occupation.join('/')}
                 </span>
               </h4>
             )}
@@ -56,14 +56,14 @@ const CharacterDetails = () => {
               Status: <span className='text-warning'>{castInfo.status}</span>
             </h4>
             <h4 className='text-light m-3'>
-              Portrayed-by:{" "}
+              Portrayed-by:{' '}
               <span className='text-warning'>{castInfo.portrayed}</span>
             </h4>
-            {typeof castInfo.appearance === "object" && (
+            {typeof castInfo.appearance === 'object' && (
               <h4 className='text-light m-3'>
-                Season:{" "}
+                Season:{' '}
                 <span className='text-warning'>
-                  {castInfo.appearance.join("-")}
+                  {castInfo.appearance.join('-')}
                 </span>
               </h4>
             )}
@@ -77,7 +77,7 @@ const CharacterDetails = () => {
         <CharacterQuotes author={nameForParam}></CharacterQuotes>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CharacterDetails;
+export default CharacterDetails
