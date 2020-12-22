@@ -20,7 +20,7 @@ const NavBar = () => {
           />
         </a>
         <Link to={`/casts`}>
-          <button className='btn btn-warning'>
+          <button className='btn btn-info'>
             {' '}
             <FontAwesomeIcon icon={faUsers} /> View Character List
           </button>

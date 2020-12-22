@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import CastList from './CastList';
-import Pagination from './Pagination';
+import React, { useEffect, useState } from "react";
+import CastList from "./CastList";
+import Pagination from "./Pagination";
 
 const Casts = () => {
   const [casts, setCasts] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [castsPerPage] = useState(10);
   useEffect(() => {
-    const baseURL = 'https://www.breakingbadapi.com/api/characters';
+    const baseURL = "https://www.breakingbadapi.com/api/characters";
     fetch(baseURL)
       .then((res) => res.json())
       .then((data) => setCasts(data));
@@ -42,12 +42,18 @@ const Casts = () => {
         </form>
       </div>
       <div className='row'>
-        <CastList currentCast={currentCast}></CastList>
-        <Pagination
-          castsPerPage={castsPerPage}
-          totalCasts={filteredCasts.length}
-          paginate={paginate}
-        />
+        {currentCast.length ? (
+          <>
+            <CastList currentCast={currentCast}></CastList>
+            <Pagination
+              castsPerPage={castsPerPage}
+              totalCasts={filteredCasts.length}
+              paginate={paginate}
+            />
+          </>
+        ) : (
+          <h4 className='mx-auto text-danger'>Loading...</h4>
+        )}
       </div>
     </div>
   );

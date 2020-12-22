@@ -17,7 +17,7 @@ function App() {
           <Route path='/casts'>
             <Casts />
           </Route>
-          <Route path='/castDetails/:id'>
+          <Route path='/castDetails/:char_id'>
             <CharacterDetails />
           </Route>
         </Switch>
