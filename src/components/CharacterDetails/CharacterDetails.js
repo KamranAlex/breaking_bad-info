@@ -61,7 +61,7 @@ const CharacterDetails = () => {
             </h4>
             {typeof castInfo.appearance === "object" && (
               <h4 className='text-light m-3'>
-                Seassion:{" "}
+                Season:{" "}
                 <span className='text-warning'>
                   {castInfo.appearance.join("-")}
                 </span>
